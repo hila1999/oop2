@@ -13,7 +13,7 @@ class User:
         self.my_posts = []
 
     def __repr__(self):
-        return f"User name: {self.name}, Number of posts: {self.my_posts.__len__()}, Number of followers:{self.followers.__len__()} "
+        return f"User name: {self.name}, Number of posts: {self.my_posts.__len__()}, Number of followers: {self.followers.__len__()} "
 
     def add_observer(self, observer):
         self.observers.append(observer)
@@ -56,12 +56,13 @@ class User:
         if self in u2.followers:
             u2.followers.remove(self)
             u2.observers.remove(self)
-            print(f"{u2.name} unfollowed {self.name}")
+            print(f"{self.name} unfollowed {u2.name}")
 
 
     def publish_post(self, type: str, dataWord: str, price = None, location:str = None, available = True):
-        return PostFactory.process_type(self, type, dataWord, price, location, available = True)
-
+        post_now =PostFactory.process_type(self, type, dataWord, price, location, available = True)
+        self.my_posts.append(post_now)
+        return post_now
 
 
 
