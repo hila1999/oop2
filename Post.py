@@ -30,6 +30,7 @@ class PostFactory:
         self.name = name
         self.dataWorld = dataWorld
         self.price = price
+        self.location = location
         self.available = available
         self.liked_by = []
         self.observers = []
@@ -67,25 +68,31 @@ class PostFactory:
 class TextPost(PostFactory):
     def __init__(self, name: User,  dataWorld: str):
         super().__init__(name, dataWorld)
-        print(f"{name.name} published a post:\n{dataWorld}")
+        print(f"{name.name} published a post:\n{dataWorld} \n")
+
+    def __str__(self):
+        return  f"{self.name.name} published a post:\n{self.dataWorld} \n"
+
 
 
 class ImagePost(PostFactory):
     def __init__(self, name:User, img:str):
-        print(img)
         super().__init__(name, img)
-
+        print(f"{self.name.name} posted a picture \n")
     def display(self):
         image_rgb = plt.imread(self.dataWorld)
         plt.imshow(image_rgb)
         plt.axis('off')
         plt.show()
+        print("Shows picture")
+    def __str__(self):
+        return f"{self.name.name} posted a picture \n"
 
 class SalePost(PostFactory):
-    def __init__(self, name:User, dataWorld:str, price:int ,location:str=None, available:bool=True):
+    def __init__(self, name:User, dataWorld:str, price:int ,location:str=None, available:bool = True):
         super().__init__(name , dataWorld , price, location, available)
         print(f"{name.name} posted a product for sale:")
-        print(f"For sale! {dataWorld}, price: {price}, pickup from: {location}")
+        print(f"For sale! {dataWorld}, price: {price}, pickup from: {location} \n")
 
     # def  print(self,dataWord:str,price, location):
     #     print(f"{self.name} posted a product for sale:")
@@ -101,3 +108,6 @@ class SalePost(PostFactory):
         if self.name.passord == passord:
             self.available = False
             print(f"{self.name.name}'s product is sold")
+
+    def __str__(self):
+        return f"{self.name.name} posted a product for sale: \n For sale! {self.dataWorld}, price: {self.price}, pickup from: {self.location} \n"
