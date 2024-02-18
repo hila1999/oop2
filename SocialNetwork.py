@@ -21,8 +21,11 @@ class SocialNetwork:
         print(f"The social network {self.name} was created!")
         self._initialized = True
 
-    def __repr__(self):
-        return f"{self.name} social network:\n{self.network} "
+    def __str__(self):
+        users_info = [str(self.network[username]) for username in self.network]  # List comprehension to get user info
+        return f"{self.name} social network:\n" + "\n".join(users_info)
+
+
 
 
     def sign_up(self,username, password):
