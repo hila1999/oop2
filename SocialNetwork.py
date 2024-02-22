@@ -23,7 +23,7 @@ class SocialNetwork:
 
     def __str__(self):
         users_info = [str(self.network[username]) for username in self.network]  # List comprehension to get user info
-        return f"{self.name} social network:\n" + "\n".join(users_info)
+        return f"{self.name} social network:\n" + "\n".join(users_info) + "\n"
 
 
 
@@ -60,4 +60,3 @@ class SocialNetwork:
         self.logged_in_users.remove(self.network[username])
         self.network[username].is_connected = False
         print(f"{username} disconnected")
-
