@@ -12,7 +12,7 @@ class SocialNetwork:
             cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self, name):
+    def __init__(self, name): 
         if self._initialized:
             return
         self.name = name
