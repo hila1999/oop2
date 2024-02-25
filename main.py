@@ -5,21 +5,13 @@ def main():
     # Creating the network
     network = SocialNetwork("Twitter")
     print()
-    # print(network)
 
-    #
-    # # Creating users
+    # Creating users
     u1 = network.sign_up("Alice", "pass1")
-    # u8 = network.sign_up("Alice", "pass1")
-
     u2 = network.sign_up("Bob", "pass2")
-
     u3 = network.sign_up("Charlie", "pass3")
-    print(network)
-
     u4 = network.sign_up("David", "pass4")
     u5 = network.sign_up("Eve", "pass5")
-    #
 
     # Creating followers
     u1.follow(u2)
@@ -44,16 +36,15 @@ def main():
     # Creating sale post
     p3 = u3.publish_post("Sale", "Toyota prius 2012", 42000, "Haifa")
 
-    #
     # Creating likes and comments
-    # p2.like(u4)
+    p2.like(u4)
     p1.like(u4)
     p1.like(u2)
     p1.comment(u3, "Columbus's bold journey!")
-    # p2.comment(u1, "So beautiful!")
-    # p2.like(u1)
-    # p2.like(u2)
-    # p2.like(u5)
+    p2.comment(u1, "So beautiful!")
+    p2.like(u1)
+    p2.like(u2)
+    p2.like(u5)
     p1.comment(u5, "A pivotal moment")
     p3.comment(u2, "Exorbitant price")
     print()
@@ -67,46 +58,44 @@ def main():
     p3.comment(u2, "Can you give me your phone number?")
     p3.comment(u4, "+97255576433")
     print()
-    #
-    # print(p3.available)
-    # # # Defining the product as sold
-    # p3.sold("pass3")
-    # print(p3.available)
-    # print()
-    #
-    # print(p3)
-    #
+
+    # Defining the product as sold
+    p3.sold("pass3")
+    print()
+
+    print(p3)
+
     # Displaying the image of the post
     p2.display()
     print()
-    #
-    # p2.comment(u5, "Amazing picture!")
-    # print()
-    #
-    # # Using unfollow
-    # u2.unfollow(u1)
-    # u3.unfollow(u2)
-    # print()
-    #
+
+    p2.comment(u5, "Amazing picture!")
+    print()
+
+    # Using unfollow
+    u2.unfollow(u1)
+    u3.unfollow(u2)
+    print()
+
     # Using log_in & log_out
     network.log_out("Charlie")
     network.log_in("Charlie", "pass3")
     print()
 
-    # # User printing
-    # print(u1)
-    # print()
-    #
-    # # Post printing
-    # print(p1)
-    # print(p2)
-    #
-    # # Printing all notifications received by a certain user
-    # u4.print_notifications()
-    # print()
-    #
-    # # Network printing
-    #  print(network)
+    # User printing
+    print(u1)
+    print()
+
+    # Post printing
+    print(p1)
+    print(p2)
+
+    # Printing all notifications received by a certain user
+    u4.print_notifications()
+    print()
+
+    # Network printing
+    print(network, end='')
 
 
 if __name__ == '__main__':
