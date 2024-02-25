@@ -60,3 +60,4 @@ class SocialNetwork:
         self.logged_in_users.remove(self.network[username])
         self.network[username].is_connected = False
         print(f"{username} disconnected")
+
