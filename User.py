@@ -1,17 +1,19 @@
 from Post import PostFactory
-
-
+from typing import List
 class User:
-
-    def __init__(self, name: str, passord: str ,is_connected: bool=None ):
+    def __init__(self, name: str, passord: str):
         self.name = name
         self.passord = passord
-        self.is_connected = is_connected
-        self.followers = [] # how is follow after hime
+        self.is_connected = True
+        self.followers: List[User] = []  # how is follow after hime
         self.my_notifications = []
         self.observers = []
         self.my_posts = []
 
+    def get_name(self) -> str:
+        return self.name
+    def get_followers(self) -> list:
+        return self.followers
     def __str__(self):
         return f"User name: {self.name}, Number of posts: {self.my_posts.__len__()}, Number of followers: {self.followers.__len__()}"
 
@@ -24,21 +26,6 @@ class User:
     def update(self, observable, notifications):
         self.my_notifications.append(notifications)
 
-    # def like(self,post):
-    #     if not self.is_connected:
-    #         print("Not connected")
-    #         return
-    #     if self not in post.liked_by:
-    #      post.liked_by.append(self)
-    #     else:
-    #         pass
-    # def comment(self,post):
-    #     if not self.is_connected:
-    #         print("Not connected")
-    #         return
-    #     if self not in post.comments:
-    #         post.comments.append(self)
-
     def print_notifications(self):
         print(f"{self.name}'s notifications:")
         for notifications in self.my_notifications:
@@ -48,7 +35,7 @@ class User:
             print("Not connected")
             return
         if self in u2.followers:
-            pass
+            return
         if self.name != u2.name:
             u2.followers.append(self)
             u2.observers.append(self)
@@ -71,5 +58,4 @@ class User:
         post_now =PostFactory.process_type(self, type, dataWord, price, location, available = True)
         self.my_posts.append(post_now)
         return post_now
-
 
